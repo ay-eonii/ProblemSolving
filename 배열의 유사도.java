@@ -1,4 +1,4 @@
-class Solution2 {
+class Solution {
 
   public static int solution(String[] s1, String[] s2) {
     int cnt = 0;
@@ -10,12 +10,5 @@ class Solution2 {
       }
     }
     return cnt;
-  }
-
-  public static void main(String[] args) {
-    String[] a = { "a", "b", "c" };
-    String[] b = { "com", "b", "d", "p", "c" };
-
-    System.out.println(solution(a, b));
   }
 }
