@@ -31,7 +31,6 @@ class Solution2 {
     }
     str += n;
 
-    System.out.println(str);
     return Integer.parseInt(str, 3);
   }
 }
