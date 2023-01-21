@@ -2,16 +2,25 @@ class Solution {
 
   public int solution(String dartResult) {
     double[] answerArr = new double[3];
+    String num = "0123456789";
     int index = 0;
     int answer = 0;
 
     String[] dartResultArr = dartResult.split("");
-    for (String str : dartResultArr) {
-      try {
-        answerArr[index] = Integer.parseInt(str);
+    for (int i = 0; i < dartResultArr.length; i++) {
+      if (num.contains(dartResultArr[i])) {
+        if (
+          i > 0 &&
+          dartResultArr[i].equals("0") &&
+          dartResultArr[i - 1].equals("1")
+        ) {
+          answerArr[--index] = 10;
+        } else {
+          answerArr[index] = Integer.parseInt(dartResultArr[i]);
+        }
         index++;
-      } catch (NumberFormatException e) {
-        switch (str) {
+      } else {
+        switch (dartResultArr[i]) {
           case "S":
             break;
           case "D":
@@ -28,15 +37,8 @@ class Solution {
             break;
           case "#":
             answerArr[index - 1] *= -1;
-            if (index > 1) {
-              answerArr[index - 2] *= -1;
-            }
             break;
         }
-      }
-      System.out.println("str: " + str);
-      for (double i : answerArr) {
-        System.out.println("answerArr: " + i);
       }
     }
     for (double i : answerArr) {
