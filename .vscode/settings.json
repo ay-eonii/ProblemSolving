@@ -1,6 +1,0 @@
-{
-    "editor.defaultFormatter": "mwpb.java-prettier-formatter",
-    "[java]": {
-        "editor.defaultFormatter": "redhat.java"
-    }
-}
