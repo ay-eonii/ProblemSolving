@@ -30,5 +30,5 @@ class Solution {
  * strategy
  * 1. 배열 자르기 : CopyOfRange
  * 2. 정렬
- * 3. k번째 숫자(charAt) return
+ * 3. k번째 숫자 return
  */
