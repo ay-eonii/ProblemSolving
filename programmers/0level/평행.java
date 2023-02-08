@@ -31,18 +31,23 @@ class Solution1 {
     }
 }
 
-class Solution2 {
+class Solution {
     public int solution(int[][] dots) {
-        if (gradient(dots[0], dots[1]) == gradient(dots[2], dots[3])) {
-            return 1;
-        } else {
-            return 0;
+        int[][] matchs = new int[][] { { 0, 1, 2, 3 }, { 0, 2, 1, 3 }, { 0, 3, 1, 2 } };
+        for (int[] match : matchs) {
+            System.out.println(match[0] + " " + match[1] + " " + match[2] + " " + match[3]);
+            if (gradient(dots[match[0]], dots[match[1]]) == gradient(dots[match[2]], dots[match[3]])) {
+                return 1;
+            }
         }
+        return 0;
+
     }
 
     public float gradient(int[] a, int[] b) {
-        float top = Math.abs(a[0] - b[0]);
-        float bot = Math.abs(a[1] - b[1]);
+        float top = a[0] - b[0];
+        float bot = a[1] - b[1];
+        System.out.println(top + " " + bot);
         return top / bot;
     }
 }
