@@ -31,7 +31,7 @@ class Solution1 {
     }
 }
 
-class Solution {
+class Solution2 {
     public int solution(int[][] dots) {
         int[][] matchs = new int[][] { { 0, 1, 2, 3 }, { 0, 2, 1, 3 }, { 0, 3, 1, 2 } };
         for (int[] match : matchs) {
