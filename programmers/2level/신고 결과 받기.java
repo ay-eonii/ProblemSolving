@@ -15,8 +15,8 @@ class Solution {
         }
         for (boolean[] e : error) {
             int cnt = 0;
-            for (int i = 0; i < e.length; i++) {
-                if (e[i]) {
+            for (boolean t : e) {
+                if (t) {
                     cnt++;
                 }
             }
