@@ -1,3 +1,5 @@
+package baekjoon.timecomplexity.p24265.src;
+
 import java.util.Scanner;
 
 public class p24265 {
