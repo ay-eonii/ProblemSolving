@@ -12,6 +12,27 @@ public class p2750 {
             n[i] = Integer.parseInt(bf.readLine());
         }
 
+//        insertSorting(size, n);
+        bubbleSorting(size, n);
+
+        for (int i : n) {
+            System.out.println(i);
+        }
+    }
+
+    private static void bubbleSorting(int size, int[] n) {
+        for (int i = 0; i < size - 1; i++) {  //52341 25341 23541 23451 23415 / 23145 / 21345 / 12345
+            for (int j = 0; j < size - 1; j++) {
+                int temp = n[j];
+                if (temp > n[j+1]) {
+                    n[j] = n[j + 1];
+                    n[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    private static void insertSorting(int size, int[] n) {
         for (int i = 1; i < size; i++) {
             int j = i - 1;
             int temp = n[i];
@@ -20,9 +41,6 @@ public class p2750 {
                 j--;
             }
             n[j + 1] = temp;
-        }
-        for (int i : n) {
-            System.out.println(i);
         }
     }
 }
