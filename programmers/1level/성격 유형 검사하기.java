@@ -8,47 +8,33 @@ import java.util.Map;
 
 class Solution {
     public String solution(String[] survey, int[] choices) {
-        int[] score = new int[]{3, 2, 1, 0, 1, 2, 3};
+        int[] scores = new int[]{3, 2, 1, 0, 1, 2, 3};
+        Character[][] tests = new Character[][]{{'R' , 'T'}, {'C' , 'F'}, {'J' , 'M'}, {'A' , 'N'}};
 
         Map<Character, Integer> map = new HashMap<>();
-        map.put('R' , 0);
-        map.put('T' , 0);
-        map.put('F' , 0);
-        map.put('C' , 0);
-        map.put('M' , 0);
-        map.put('J' , 0);
-        map.put('A' , 0);
-        map.put('N' , 0);
+        for (Character[] test : tests) {
+            map.put(test[0] , 0);
+            map.put(test[1] , 0);
+        }
 
         for (int i = 0; i < choices.length; i++) {
             int sum = 0;
             if (choices[i] < 4) {
-                sum = map.get(survey[i].charAt(0)) + score[choices[i] - 1];
+                sum = map.get(survey[i].charAt(0)) + scores[choices[i] - 1];
                 map.put(survey[i].charAt(0), sum);
             } else if (choices[i] > 4) {
-                sum = map.get(survey[i].charAt(1)) + score[choices[i] - 1];
+                sum = map.get(survey[i].charAt(1)) + scores[choices[i] - 1];
                 map.put(survey[i].charAt(1), sum);
             }
         }
 
         String answer = "";
-        answer = getAnswer(map, answer, 'R' , 'T');
-        answer = getAnswer(map, answer, 'C' , 'F');
-        answer = getAnswer(map, answer, 'J' , 'M');
-        answer = getAnswer(map, answer, 'A' , 'N');
-        return answer;
-    }
-
-    private static String getAnswer(Map<Character, Integer> map, String answer, Character t1, Character t2) {
-        if (map.get(t1) >= map.get(t2)) {
-            answer += t1;
-        } else {
-            answer += t2;
+        for (Character[] test : tests) {
+            answer += map.get(test[0]) >= map.get(test[1]) ? test[0] : test[1];
         }
         return answer;
     }
 }
-
 
 /* strategy
 1. score[] = {3,2,1,0,1,2,3}
