@@ -2,7 +2,7 @@
  * 각 계단에 쓰여 있는 점수가 주어질 때 이 게임에서 얻을 수 있는 총 점수의 최댓값을 구하는 프로그램을 작성하시오.
  * */
 
-package baekjoon.dynamic_programming1;
+package baekjoon.dynamic_programming;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package baekjoon.dynamic_programming1;
+package baekjoon.dynamic_programming;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,10 +33,10 @@ public class p1463 {
 }
 
 /*
-* 1. n%3 == 0이면 n/3
-* 2. n%2 == 0이면 n/2
-* 3. n--;
-*
-* 결국 n == 1 이어야 함
-* 3의 배수 | 2의 배수까지만 가면 됨
-* */
+ * 1. n%3 == 0이면 n/3
+ * 2. n%2 == 0이면 n/2
+ * 3. n--;
+ *
+ * 결국 n == 1 이어야 함
+ * 3의 배수 | 2의 배수까지만 가면 됨
+ * */
