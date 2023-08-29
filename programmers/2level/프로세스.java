@@ -4,12 +4,9 @@
 해당 프로세스가 몇 번째로 실행되는지 return 하도록 solution 함수를 작성해주세요.
 */
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
-class Solution {
+class Solution1 {
     public int solution(int[] priorities, int location) {
         Queue<Integer> place = new LinkedList<>();
         Queue<Integer> process = new LinkedList<>();
@@ -47,6 +44,36 @@ class Solution {
         return answer;
     }
 }
+
+class Solution2 {
+    public int solution(int[] priorities, int location) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for (int priority : priorities) {
+            pq.add(priority);
+        }
+
+        int answer = 1;
+        while (!pq.isEmpty()) {
+            for (int i = 0; i < priorities.length; i++) {
+                if (priorities[i] == pq.peek()) {
+                    if (i == location) {
+                        return answer;
+                    }
+                    answer++;
+                    pq.poll();
+                }
+            }
+        }
+        return answer;
+    }
+}
+
+/*
+1. Queue 두 개 -> 우선순위, 프로세스: 동시에 움직임
+2. location[] 바탕 프로세스를 Queue<Integer>에서 1(location), 0 로 만들기
+3. location 내림차순 정렬
+4. location[0] == queue.peek() 일때까지 queue 돌리기
+*/
 
 /* strategy
 1. Queue 두 개 -> 우선순위, 프로세스: 동시에 움직임
