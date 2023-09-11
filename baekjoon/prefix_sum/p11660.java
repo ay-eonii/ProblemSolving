@@ -15,8 +15,7 @@ public class p11660 {
         int[][] colSum = new int[N + 1][N + 1];
         for (int i = 1; i < N + 1; i++) {
             st = new StringTokenizer(br.readLine());
-            colSum[i][1] = Integer.parseInt(st.nextToken());
-            for (int j = 2; j < N + 1; j++) {
+            for (int j = 1; j < N + 1; j++) {
                 colSum[i][j] = colSum[i][j - 1] + Integer.parseInt(st.nextToken());
             }
         }
