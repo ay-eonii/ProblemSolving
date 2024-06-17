@@ -25,6 +25,7 @@ public class p16928 {
         Queue<Integer> queue = new LinkedList<>();
         boolean[] visited = new boolean[101];
         int[] count = new int[101];
+
         queue.add(1); // 출발점
         visited[1] = true;
         count[1] = 0;
@@ -38,14 +39,14 @@ public class p16928 {
             for (int i = 1; i <= 6; i++) {
                 int location = cur + i;
                 if (location > 100) {
-                    continue;
+                    break;
                 }
                 if (visited[location]) {
                     continue;
                 }
                 visited[location] = true;
 
-                if (move[location] > location) {
+                if (move[location] != 0) { // 사다리 || 뱀
                     if (!visited[move[location]]) {
                         queue.add(move[location]);
                         visited[move[location]] = true;
