@@ -6,46 +6,48 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class p2343 {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] inputs = br.readLine().split(" ");
-        int n = Integer.parseInt(inputs[0]);
-        int m = Integer.parseInt(inputs[1]);
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[] inputs = br.readLine().split(" ");
+		int n = Integer.parseInt(inputs[0]);
+		int m = Integer.parseInt(inputs[1]);
 
-        long total = 0;
-        int[] lectures = new int[n];
-        for (int i = 0; i < n; i++) {
-            lectures[i] = Integer.parseInt(st.nextToken());
-            total += lectures[i];
-        }
+		StringTokenizer st = new StringTokenizer(br.readLine());
 
-        long min = total / m;
-        long max = total;
+		long total = 0;
+		int[] lectures = new int[n];
+		long min = 0;
+		for (int i = 0; i < n; i++) {
+			lectures[i] = Integer.parseInt(st.nextToken());
+			total += lectures[i];
+			min = Math.max(min, lectures[i]);
+		}
 
-        while (min <= max) {
-            long middle = (min + max) / 2;
-            int sum = 0;
-            int count = 0;
-            for (int i = 0; i < n; i++) {
-                if (sum + lectures[i] > middle) {
-                    count++;
-                    sum = 0;
-                }
-                sum = sum + lectures[i];
-            }
-            if (sum != 0) count++;
+		long max = total;
+		while (min <= max) {
+			long mid = (min + max) / 2;
+			int sum = 0;
+			int count = 0;
+			for (int i = 0; i < n; i++) {
+				if (sum + lectures[i] > mid) {
+					count++;
+					sum = 0;
+				}
+				sum += lectures[i];
+			}
+			if (sum != 0)
+				count++;
 
-            if (count > m) {
-                min = middle + 1;
-            } else {
-                max = middle - 1;
-            }
-        }
+			if (count <= m) { // 블루레이가 적다
+				max = mid - 1;
+			} else { // 블루레이가 많다 -> 블루레이 크기 늘려야한다
+				min = mid + 1;
+			}
+		}
 
-        System.out.println(min);
-    }
+		System.out.println(min);
+	}
 }
 
 // strategy
