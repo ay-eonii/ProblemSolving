@@ -36,13 +36,13 @@ public class p14891 {
 	}
 
 	private static void bfs(Wheel wheel) {
-		Queue<Integer> queue = new LinkedList<>();
+		Queue<Wheel> queue = new LinkedList<>();
 		boolean[] visited = new boolean[4];
 		int[] turn = new int[4];
 		queue.add(wheel);
 
 		while (!queue.isEmpty()) {
-			Integer current = queue.poll();
+			Wheel current = queue.poll();
 			turn[current.order] = current.direction;
 			visited[current.order] = true;
 			if (current.isNotFirst() && !visited[current.order - 1]) { // 왼쪽 탐색
