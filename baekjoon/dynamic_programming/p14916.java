@@ -12,7 +12,7 @@ public class p14916 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        dp = new int[n + 1];
+        dp = new int[100_001];
         Arrays.fill(dp, -1);
         dp[2] = 1;
         dp[5] = 1;
