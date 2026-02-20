@@ -14,44 +14,34 @@ public class p14627 {
 
 		long[] arr = new long[S];
 		long max = 0;
+		long sum = 0;
 		for (int i = 0; i < S; i++) {
 			arr[i] = Long.parseLong(br.readLine());
 			max = Math.max(max, arr[i]);
+			sum += arr[i];
 		}
 
 		long min = max / C;
-		long answer = Long.MAX_VALUE;
+		long ret = 0;
 		while (min <= max) {
 			long mid = (min + max) / 2;
-			long left = check(mid, arr, C);
-			if (left == -1) {
-				max = mid - 1;
-			} else {
-				answer = Math.min(answer, left);
+			if (check(mid, arr, C)) {
 				min = mid + 1;
+				ret = Math.max(ret, mid);
+			} else {
+				max = mid - 1;
 			}
 		}
 
-		System.out.println(answer);
+		System.out.println(sum - (ret * C));
 	}
 
-	static long check(long mid, long[] arr, int c) {
-		long count = c;
-		long left = 0;
+	static boolean check(long mid, long[] arr, int c) {
+		long count = 0;
 		for (long a : arr) {
-			if (a / mid <= count) {
-				left += a % mid;
-				count -= a / mid;
-			} else {
-				left += a - (mid * count);
-				count = 0;
-			}
+			count += a / mid;
 		}
 
-		if (count > 0) {
-			return -1;
-		} else {
-			return left;
-		}
+		return count >= c;
 	}
 }
