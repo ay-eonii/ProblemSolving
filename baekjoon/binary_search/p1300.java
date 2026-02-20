@@ -8,28 +8,33 @@ public class p1300 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int k = Integer.parseInt(br.readLine());
 
-        int N = Integer.parseInt(br.readLine());
-        int K = Integer.parseInt(br.readLine());
-        int start = 1;
-        int end = K;
-
+        int min = 1;
+        int max = k;
         int answer = 0;
-        while (start <= end) {
-            int mid = (start + end) / 2;
-            int cnt = 0;
+        while (min <= max) {
+            int mid = (min + max) / 2;
 
-            for (int i = 1; i < N + 1; i++) {
-                cnt += Math.min(mid / i, N);
+            int count = 0;
+            for (int i = 1; i < n + 1; i++) {
+                count += Math.min(mid / i, n); // 각 행에서 n보다 작은 원소 개수
+                // 𝑥 보다 작은 원소의 개수는 최대 N개를 넘지 못한다.
             }
-            if (cnt < K) {
-                start = mid + 1;
+
+            if (count < k) {
+                min = mid + 1;
             } else {
-                end = mid - 1;
                 answer = mid;
+                max = mid - 1;
             }
         }
+
         System.out.println(answer);
     }
 }
 
+// strategy
+// 이분탐색 대상 : 원소값
+// 비교 기준 : 해당 원소값보다 작은 원소 수
